@@ -16,7 +16,7 @@ while ((match = slugRegex.exec(content)) !== null) {
 const pages = ['/', '/products'];
 slugs.forEach((s) => pages.push(`/products/${s}`));
 
-const origin = process.env.SITE_ORIGIN || 'https://example.com';
+const origin = process.env.SITE_ORIGIN || 'https://vishakhamultivista.vercel.app';
 const lastmod = new Date().toISOString();
 
 const urls = pages.map((p) => `  <url>\n    <loc>${origin}${p}</loc>\n    <lastmod>${lastmod}</lastmod>\n  </url>`).join('\n');

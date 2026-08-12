@@ -78,6 +78,8 @@ const industries = [
   { title: 'Residential', icon: Users, copy: 'Thoughtful steel door systems for modern developments.' },
 ];
 
+const SITE_ORIGIN = (import.meta as any)?.env?.VITE_SITE_ORIGIN || 'https://vishakhamultivista.vercel.app';
+
 function Logo({ light = false }: { light?: boolean }) {
   return <div className={`brand ${light ? 'brand-light' : ''}`}><img className="brand-logo" src="/logo.png" alt="Vishakha Multivista Products logo" /><div><strong>Vishakha</strong><small>Multivista Products</small></div></div>;
 }
@@ -167,7 +169,7 @@ function App() {
   const [path, setPath] = useState(window.location.pathname);
   useEffect(() => { const onPop = () => setPath(window.location.pathname); window.addEventListener('popstate', onPop); return () => window.removeEventListener('popstate', onPop); }, []);
   useEffect(() => {
-    const origin = window.location.origin;
+    const origin = SITE_ORIGIN || window.location.origin;
     const current = products.find((product) => path === `/products/${product.slug}`);
     const title = current ? `${current.name} | Vishakha Multivista Products` : path === '/products' ? 'Steel Door Products | Vishakha Multivista Products' : 'Premium Steel Door Solutions | Vishakha Multivista Products';
     const description = current ? `${current.description} | Vishakha Multivista Products - Manufacturer & Supplier in Chennai` : 'Vishakha Multivista Products manufactures, supplies and installs premium steel doors for commercial, industrial, healthcare and institutional projects.';

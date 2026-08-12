@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: /sitemap.xml
+Host: vishakhamultivista.vercel.app
+Sitemap: https://vishakhamultivista.vercel.app/sitemap.xml
