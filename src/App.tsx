@@ -57,16 +57,16 @@ const products: Product[] = [
   { slug: 'egress-door', name: 'Egress Door', category: 'Fire & life safety', description: 'Emergency egress doors with dependable hardware integration.', overview: 'An engineered exit solution designed to make safe movement simple, visible and dependable when it matters most.', image: '/products/egressdoor.png', features: ['Panic bar compatibility', 'Door closer and hinge integration', 'High-cycle steel construction'], applications: ['Hospitals', 'Schools and institutions', 'Commercial buildings'], specifications: [['Width', '900mm – 1200mm'], ['Height', '2100mm – 2400mm'], ['Thickness', '40mm – 70mm'], ['Core', 'Honeycomb / Rockwool'], ['Hardware', 'Panic Bar, Door Closer, Hinges']] },
   { slug: 'fire-exit-door', name: 'Fire Exit Door', category: 'Fire & life safety', description: 'Purpose-built steel exit doors for safer evacuation routes.', overview: 'High-performance fire exit doors that combine robust steel construction with intuitive operation and project-ready hardware options.', image: '/products/fireexitdoor.png', features: ['Heavy-duty GI shutter', 'Wide opening options', 'Compatible with fire exit hardware'], applications: ['Factories', 'Warehouses', 'Commercial premises'], specifications: [['Width', '900mm – 1500mm'], ['Height', 'Up to 2400mm'], ['Thickness', '46mm – 70mm'], ['GI Shutter', '0.8mm – 1.2mm'], ['Frame', '1.2mm – 1.6mm']] },
   { slug: 'stainless-steel-door', name: 'Stainless Steel Door', category: 'Hygienic environments', description: 'Clean, corrosion-resistant doors for demanding environments.', overview: 'SS304 doors offer a precise, low-maintenance finish where hygiene, corrosion resistance and long-term appearance are essential.', image: '/products/ssdoor.png', features: ['SS304 construction', 'Large single and double leaf sizes', 'Honeycomb, PUF or Rockwool infill'], applications: ['Healthcare', 'Food and beverage', 'Pharmaceutical facilities'], specifications: [['Material', 'SS304'], ['Infill', 'Honeycomb / PUF / Rockwool'], ['Max Single Leaf', '1420 × 3000 mm'], ['Max Double Leaf', '2840 × 3000 mm'], ['Shutter Thickness', '46 mm']] },
-  { slug: 'acoustic-door', name: 'Acoustic Door', category: 'Specialty doors', description: 'Steel acoustic doors that help create quieter, more controlled spaces.', overview: 'Designed around Rockwool insulation and carefully considered construction, our acoustic door system helps manage sound transfer in specialist project zones.', image: '/products/acoustic-door.jpg', features: ['Rockwool acoustic infill', 'Large-format leaf options', 'Clean, project-ready finish'], applications: ['Studios and auditoriums', 'Plant rooms', 'Meeting and research spaces'], specifications: [['Material', 'GPSP'], ['Infill', 'Rockwool'], ['Max Single Leaf', '1420 × 3000 mm'], ['Max Double Leaf', '2840 × 3000 mm'], ['Shutter Thickness', '46 mm']] },
-  { slug: 'general-sliding-door', name: 'General Sliding Door', category: 'Sliding systems', description: 'Space-efficient sliding steel doors for flexible access planning.', overview: 'A smooth, practical sliding door platform for openings where swing clearance is limited or operational flow is a priority.', image: '/products/general-sliding-door.jpg', features: ['Honeycomb, PUF or Rockwool infill', 'Large single and double leaf options', 'Space-efficient movement'], applications: ['Industrial facilities', 'Service corridors', 'Commercial back-of-house'], specifications: [['Material', 'GPSP'], ['Infill', 'Honeycomb / PUF / Rockwool'], ['Max Single Leaf', '1420 × 3000 mm'], ['Max Double Leaf', '2840 × 3000 mm'], ['Shutter Thickness', '46 mm']] },
-  { slug: 'rail-and-stile-door', name: 'Rail & Stile Door', category: 'Architectural systems', description: 'Structured steel framing with a refined, architectural character.', overview: 'Rail and stile construction brings a composed, durable language to high-use openings while keeping the design adaptable to project requirements.', image: '/products/rail-and-stile-door.jpg', features: ['Strong framed construction', 'Multiple infill choices', 'Designed for large openings'], applications: ['Commercial interiors', 'Institutional buildings', 'Retail projects'], specifications: [['Material', 'GPSP'], ['Infill', 'Honeycomb / PUF / Rockwool'], ['Max Single Leaf', '1420 × 3000 mm'], ['Max Double Leaf', '2840 × 3000 mm'], ['Shutter Thickness', '46 mm']] },
-  { slug: 'scientific-door', name: 'Scientific Door', category: 'Specialty doors', description: 'Precision door systems for research and technical spaces.', overview: 'Scientific doors are configured for controlled environments where dependable operation, clean detailing and specialist coordination are critical.', image: '/products/scientific-door.jpg', features: ['Controlled-environment ready', 'Robust GPSP construction', 'Multiple core options'], applications: ['Research laboratories', 'Testing facilities', 'Technical rooms'], specifications: [['Material', 'GPSP'], ['Infill', 'Honeycomb / PUF / Rockwool'], ['Max Single Leaf', '1420 × 3000 mm'], ['Max Double Leaf', '2840 × 3000 mm'], ['Shutter Thickness', '46 mm']] },
+  { slug: 'acoustic-door', name: 'Acoustic Door', category: 'Specialty doors', description: 'Steel acoustic doors that help create quieter, more controlled spaces.', overview: 'Designed around Rockwool insulation and carefully considered construction, our acoustic door system helps manage sound transfer in specialist project zones.', image: '/products/acousticdoor.png', features: ['Rockwool acoustic infill', 'Large-format leaf options', 'Clean, project-ready finish'], applications: ['Studios and auditoriums', 'Plant rooms', 'Meeting and research spaces'], specifications: [['Material', 'GPSP'], ['Infill', 'Rockwool'], ['Max Single Leaf', '1420 × 3000 mm'], ['Max Double Leaf', '2840 × 3000 mm'], ['Shutter Thickness', '46 mm']] },
+  { slug: 'general-sliding-door', name: 'General Sliding Door', category: 'Sliding systems', description: 'Space-efficient sliding steel doors for flexible access planning.', overview: 'A smooth, practical sliding door platform for openings where swing clearance is limited or operational flow is a priority.', image: '/products/slidingdoor.png', features: ['Honeycomb, PUF or Rockwool infill', 'Large single and double leaf options', 'Space-efficient movement'], applications: ['Industrial facilities', 'Service corridors', 'Commercial back-of-house'], specifications: [['Material', 'GPSP'], ['Infill', 'Honeycomb / PUF / Rockwool'], ['Max Single Leaf', '1420 × 3000 mm'], ['Max Double Leaf', '2840 × 3000 mm'], ['Shutter Thickness', '46 mm']] },
+  { slug: 'rail-and-stile-door', name: 'Rail & Stile Door', category: 'Architectural systems', description: 'Structured steel framing with a refined, architectural character.', overview: 'Rail and stile construction brings a composed, durable language to high-use openings while keeping the design adaptable to project requirements.', image: '/products/raildoor.png', features: ['Strong framed construction', 'Multiple infill choices', 'Designed for large openings'], applications: ['Commercial interiors', 'Institutional buildings', 'Retail projects'], specifications: [['Material', 'GPSP'], ['Infill', 'Honeycomb / PUF / Rockwool'], ['Max Single Leaf', '1420 × 3000 mm'], ['Max Double Leaf', '2840 × 3000 mm'], ['Shutter Thickness', '46 mm']] },
+  { slug: 'scientific-door', name: 'Scientific Door', category: 'Specialty doors', description: 'Precision door systems for research and technical spaces.', overview: 'Scientific doors are configured for controlled environments where dependable operation, clean detailing and specialist coordination are critical.', image: '/products/scificdoor.png', features: ['Controlled-environment ready', 'Robust GPSP construction', 'Multiple core options'], applications: ['Research laboratories', 'Testing facilities', 'Technical rooms'], specifications: [['Material', 'GPSP'], ['Infill', 'Honeycomb / PUF / Rockwool'], ['Max Single Leaf', '1420 × 3000 mm'], ['Max Double Leaf', '2840 × 3000 mm'], ['Shutter Thickness', '46 mm']] },
   { slug: 'lead-lined-door', name: 'Lead Lined Door', category: 'Healthcare protection', description: 'Specialist lead-lined doors for radiation-sensitive environments.', overview: 'A carefully coordinated protection door with lead sheet integration for medical and technical spaces requiring additional shielding considerations.', image: '/products/leaddoor.png', features: ['Lead sheet with PUF or Rockwool', 'Large-format configurations', 'Coordinated project detailing'], applications: ['Radiology departments', 'Imaging rooms', 'Research facilities'], specifications: [['Material', 'GPSP'], ['Infill', 'PUF / Rockwool with Lead Sheet'], ['Max Single Leaf', '1420 × 3000 mm'], ['Max Double Leaf', '2840 × 3000 mm'], ['Shutter Thickness', '46 mm']] },
   { slug: 'automatic-sliding-door', name: 'Automatic Sliding Door', category: 'Access systems', description: 'Smooth automatic access for high-flow and hygiene-sensitive spaces.', overview: 'An elegant automatic sliding solution that supports hands-free access, smooth traffic flow and a clean architectural presence.', image: '/products/automatic-sliding-door.jpg', features: ['Brushless DC motor', '24V DC operation', 'Wide opening range'], applications: ['Hospitals', 'Airports and offices', 'Retail entrances'], specifications: [['Glass Thickness', '8mm – 12mm'], ['Opening Width', '1000mm – 3000mm'], ['Opening Height', '2100mm – 3000mm'], ['Drive', 'Brushless DC Motor'], ['Voltage', '24V DC']] },
-  { slug: 'fully-louvered-metal-door', name: 'Fully Louvered Metal Door', category: 'Ventilation systems', description: 'Ventilated metal doors for airflow, plant and utility spaces.', overview: 'A high-airflow louvered door system that provides practical ventilation without compromising a clean, durable metal enclosure.', image: '/products/fully-louvered-metal-door.jpg', features: ['75%–90% ventilation coverage', 'Multiple material options', 'Blade pitch configurations'], applications: ['Electrical rooms', 'Plant rooms', 'Utility enclosures'], specifications: [['Material', 'GI / MS / Aluminium / UPVC'], ['Door Thickness', '0.8mm – 1.2mm'], ['Frame Thickness', '1.2mm – 1.6mm'], ['Blade Pitch', '25mm – 50mm'], ['Ventilation Coverage', '75% – 90%']] },
+  { slug: 'fully-louvered-metal-door', name: 'Fully Louvered Metal Door', category: 'Ventilation systems', description: 'Ventilated metal doors for airflow, plant and utility spaces.', overview: 'A high-airflow louvered door system that provides practical ventilation without compromising a clean, durable metal enclosure.', image: '/products/louvereddoor.png', features: ['75%–90% ventilation coverage', 'Multiple material options', 'Blade pitch configurations'], applications: ['Electrical rooms', 'Plant rooms', 'Utility enclosures'], specifications: [['Material', 'GI / MS / Aluminium / UPVC'], ['Door Thickness', '0.8mm – 1.2mm'], ['Frame Thickness', '1.2mm – 1.6mm'], ['Blade Pitch', '25mm – 50mm'], ['Ventilation Coverage', '75% – 90%']] },
   { slug: 'manual-sliding-door', name: 'Manual Sliding Door', category: 'Sliding systems', description: 'Practical manual sliding doors for large, efficient openings.', overview: 'A flexible manual sliding platform for projects that need smooth access, durable materials and a straightforward operating experience.', image: '/products/manual-sliding-door.jpg', features: ['Glass, steel or PVC options', 'Wide width range', 'Smooth manual operation'], applications: ['Healthcare', 'Industrial areas', 'Commercial interiors'], specifications: [['Material', 'Glass / Steel / PVC'], ['Glass Thickness', '8mm – 12mm'], ['Width', '800mm – 3000mm'], ['Height', '2100mm – 3000mm']] },
-  { slug: 'clean-room-door', name: 'Clean Room Door', category: 'Hygienic environments', description: 'Sealed door systems for controlled and clean manufacturing spaces.', overview: 'Clean room doors are built for hygienic, controlled environments, with sealed interfaces and finishes selected for demanding operational conditions.', image: '/products/clean-room-door.jpg', features: ['EPDM or magnetic sealing', 'Powder coated steel or SS304 frame', 'GMP and ISO focused coordination'], applications: ['Pharmaceutical facilities', 'Hospitals', 'Clean manufacturing'], specifications: [['Glass Thickness', '10mm / 12mm'], ['Frame', 'Powder Coated Steel or SS304'], ['Sealing', 'EPDM Gasket / Magnetic Seal'], ['Compliance', 'GMP / ISO Standards']] },
-  { slug: 'fully-glazed-door', name: 'Fully Glazed Door', category: 'Architectural systems', description: 'Light-filled glazed doors with flexible glass and frame options.', overview: 'A modern glazed door system for projects seeking visual openness, daylight and a precise architectural finish.', image: '/products/fully-glazed-door.jpg', features: ['Clear, frosted, tinted or Low-E glass', 'Steel or PVC frame options', 'Project-ready safety glass specification'], applications: ['Corporate offices', 'Showrooms', 'Institutional interiors'], specifications: [['Glass Thickness', '10mm / 12mm / 14mm'], ['Glass Type', 'Clear / Frosted / Tinted / Low-E'], ['Frame', 'Steel / PVC'], ['Compliance', 'IS 2553 / BS EN 12150']] },
+  { slug: 'clean-room-door', name: 'Clean Room Door', category: 'Hygienic environments', description: 'Sealed door systems for controlled and clean manufacturing spaces.', overview: 'Clean room doors are built for hygienic, controlled environments, with sealed interfaces and finishes selected for demanding operational conditions.', image: '/products/cleandoor.png', features: ['EPDM or magnetic sealing', 'Powder coated steel or SS304 frame', 'GMP and ISO focused coordination'], applications: ['Pharmaceutical facilities', 'Hospitals', 'Clean manufacturing'], specifications: [['Glass Thickness', '10mm / 12mm'], ['Frame', 'Powder Coated Steel or SS304'], ['Sealing', 'EPDM Gasket / Magnetic Seal'], ['Compliance', 'GMP / ISO Standards']] },
+  { slug: 'fully-glazed-door', name: 'Fully Glazed Door', category: 'Architectural systems', description: 'Light-filled glazed doors with flexible glass and frame options.', overview: 'A modern glazed door system for projects seeking visual openness, daylight and a precise architectural finish.', image: '/products/glazedoor.png', features: ['Clear, frosted, tinted or Low-E glass', 'Steel or PVC frame options', 'Project-ready safety glass specification'], applications: ['Corporate offices', 'Showrooms', 'Institutional interiors'], specifications: [['Glass Thickness', '10mm / 12mm / 14mm'], ['Glass Type', 'Clear / Frosted / Tinted / Low-E'], ['Frame', 'Steel / PVC'], ['Compliance', 'IS 2553 / BS EN 12150']] },
 ];
 
 const industries = [
@@ -112,11 +112,14 @@ function QuickContactBar() {
 
 function ImageWithFallback({ src, alt, className }: { src: string; alt: string; className?: string }) {
   const [source, setSource] = useState(src);
-  return <img className={className} src={source} alt={alt} onError={() => setSource(productFallback)} />;
+  return <img className={className} src={source} alt={alt} title={alt} loading="lazy" decoding="async" onError={() => setSource(productFallback)} />;
 }
 
 function ProductCard({ product, featured = false }: { product: Product; featured?: boolean }) {
   return <article className={`product-card ${featured ? 'featured-card' : ''}`}><a className="product-image" href={`/products/${product.slug}`} onClick={(e) => { e.preventDefault(); navigate(`/products/${product.slug}`); }}><ImageWithFallback src={product.image} alt={`${product.name} steel door solution`} /><span className="product-category">{product.category}</span><span className="image-arrow"><ArrowRight size={18} /></span></a><div className="product-card-body"><h3>{product.name}</h3><p>{product.description}</p><a className="text-link" href={`/products/${product.slug}`} onClick={(e) => { e.preventDefault(); navigate(`/products/${product.slug}`); }}>View details <MoveRight size={16} /></a></div></article>;
+  const seoAlt = `${product.name} - ${product.category} Manufacturer Chennai | Vishakha Multivista Products`;
+  const seoTitle = `${product.name} - Vishakha Multivista Products`;
+  return <article className={`product-card ${featured ? 'featured-card' : ''}`}><a className="product-image" href={`/products/${product.slug}`} onClick={(e) => { e.preventDefault(); navigate(`/products/${product.slug}`); }}><ImageWithFallback src={product.image} alt={seoAlt} className="product-thumb" title={seoTitle} /><span className="product-category">{product.category}</span><span className="image-arrow"><ArrowRight size={18} /></span></a><div className="product-card-body"><h3>{product.name}</h3><p>{product.description}</p><a className="text-link" href={`/products/${product.slug}`} onClick={(e) => { e.preventDefault(); navigate(`/products/${product.slug}`); }}>View details <MoveRight size={16} /></a></div></article>;
 }
 
 function ContactForm() {
@@ -163,7 +166,127 @@ function ProductsPage() {
 function App() {
   const [path, setPath] = useState(window.location.pathname);
   useEffect(() => { const onPop = () => setPath(window.location.pathname); window.addEventListener('popstate', onPop); return () => window.removeEventListener('popstate', onPop); }, []);
-  useEffect(() => { const current = products.find((product) => path === `/products/${product.slug}`); document.title = current ? `${current.name} | Vishakha Multivista Products` : path === '/products' ? 'Steel Door Products | Vishakha Multivista Products' : 'Premium Steel Door Solutions | Vishakha Multivista Products'; const description = 'Vishakha Multivista Products manufactures, supplies and installs premium steel doors for commercial, industrial, healthcare and institutional projects.'; let meta = document.querySelector('meta[name="description"]'); if (!meta) { meta = document.createElement('meta'); meta.setAttribute('name', 'description'); document.head.appendChild(meta); } meta.setAttribute('content', description); }, [path]);
+  useEffect(() => {
+    const origin = window.location.origin;
+    const current = products.find((product) => path === `/products/${product.slug}`);
+    const title = current ? `${current.name} | Vishakha Multivista Products` : path === '/products' ? 'Steel Door Products | Vishakha Multivista Products' : 'Premium Steel Door Solutions | Vishakha Multivista Products';
+    const description = current ? `${current.description} | Vishakha Multivista Products - Manufacturer & Supplier in Chennai` : 'Vishakha Multivista Products manufactures, supplies and installs premium steel doors for commercial, industrial, healthcare and institutional projects.';
+    const canonical = `${origin}${path}`;
+
+    document.title = title;
+
+    function setMetaBy(attrName: 'name' | 'property', attrValue: string, content: string) {
+      const selector = `meta[${attrName}="${attrValue}"]`;
+      let el = document.querySelector(selector) as HTMLMetaElement | null;
+      if (!el) {
+        el = document.createElement('meta');
+        el.setAttribute(attrName, attrValue);
+        document.head.appendChild(el);
+      }
+      el.setAttribute('content', content);
+    }
+
+    // Description
+    let metaDesc = document.querySelector('meta[name="description"]') as HTMLMetaElement | null;
+    if (!metaDesc) { metaDesc = document.createElement('meta'); metaDesc.setAttribute('name', 'description'); document.head.appendChild(metaDesc); }
+    metaDesc.setAttribute('content', description);
+
+    // Canonical
+    let linkCanonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
+    if (!linkCanonical) { linkCanonical = document.createElement('link'); linkCanonical.setAttribute('rel', 'canonical'); document.head.appendChild(linkCanonical); }
+    linkCanonical.setAttribute('href', canonical);
+
+    // Robots
+    let metaRobots = document.querySelector('meta[name="robots"]') as HTMLMetaElement | null;
+    if (!metaRobots) { metaRobots = document.createElement('meta'); metaRobots.setAttribute('name', 'robots'); document.head.appendChild(metaRobots); }
+    metaRobots.setAttribute('content', 'index, follow');
+
+    // Manifest link and theme color
+    let linkManifest = document.querySelector('link[rel="manifest"]') as HTMLLinkElement | null;
+    if (!linkManifest) { linkManifest = document.createElement('link'); linkManifest.setAttribute('rel', 'manifest'); document.head.appendChild(linkManifest); }
+    linkManifest.setAttribute('href', '/manifest.json');
+    let metaTheme = document.querySelector('meta[name="theme-color"]') as HTMLMetaElement | null;
+    if (!metaTheme) { metaTheme = document.createElement('meta'); metaTheme.setAttribute('name', 'theme-color'); document.head.appendChild(metaTheme); }
+    metaTheme.setAttribute('content', '#0B2341');
+
+    // Preload critical assets (logo)
+    let linkPreload = document.querySelector('link[rel="preload"][as="image"][href="/logo.png"]') as HTMLLinkElement | null;
+    if (!linkPreload) {
+      linkPreload = document.createElement('link');
+      linkPreload.setAttribute('rel', 'preload');
+      linkPreload.setAttribute('as', 'image');
+      linkPreload.setAttribute('href', '/logo.png');
+      document.head.appendChild(linkPreload);
+    }
+
+    // Open Graph
+    setMetaBy('property', 'og:title', title);
+    setMetaBy('property', 'og:description', description);
+    setMetaBy('property', 'og:url', canonical);
+    setMetaBy('property', 'og:type', current ? 'product' : 'website');
+    // set a default og:image - prefer product image
+    const ogImage = current ? `${origin}${current.image}` : `${origin}/logo.png`;
+    setMetaBy('property', 'og:image', ogImage);
+
+    // Twitter
+    setMetaBy('name', 'twitter:card', 'summary_large_image');
+    setMetaBy('name', 'twitter:title', title);
+    setMetaBy('name', 'twitter:description', description);
+    setMetaBy('name', 'twitter:image', ogImage);
+
+    // Remove existing JSON-LD scripts we may have injected earlier
+    document.querySelectorAll('script[type="application/ld+json"].seo-jsonld').forEach((s) => s.remove());
+
+    // Organization + LocalBusiness structured data
+    const orgJson: any = {
+      '@context': 'https://schema.org',
+      '@type': 'Organization',
+      'name': 'Vishakha Multivista Products Pvt. Ltd.',
+      'url': origin,
+      'logo': `${origin}/logo.png`,
+      'sameAs': [],
+      'contactPoint': [{ '@type': 'ContactPoint', 'telephone': phone, 'contactType': 'customer service', 'email': email }]
+    };
+    const localJson: any = {
+      '@context': 'https://schema.org',
+      '@type': 'LocalBusiness',
+      'name': 'Vishakha Multivista Products Pvt. Ltd.',
+      'image': `${origin}/logo.png`,
+      'telephone': phone,
+      'email': email,
+      'address': { '@type': 'PostalAddress', 'streetAddress': 'No. 8/65, First Floor, M K Pathamnaban Street, C Pallavaram', 'addressLocality': 'Chennai', 'addressRegion': 'Tamil Nadu', 'postalCode': '600043', 'addressCountry': 'IN' },
+      'geo': { '@type': 'GeoCoordinates', 'latitude': 12.969694, 'longitude': 80.148667 },
+      'url': origin,
+      'priceRange': '$$',
+      'description': 'Manufacturer, Supplier and Installer of Specialized Steel Doors, Windows, Frames and Ventilators',
+      'areaServed': ['Chennai','Tamil Nadu','South India','India'],
+      'openingHoursSpecification': [{ '@type': 'OpeningHoursSpecification','dayOfWeek': ['Monday','Tuesday','Wednesday','Thursday','Friday'],'opens':'09:00','closes':'18:00'}]
+    };
+
+    const ldAll = [orgJson, localJson];
+
+    // Product specific schema when on a product page
+    if (current) {
+      const productJson: any = {
+        '@context': 'https://schema.org',
+        '@type': 'Product',
+        'name': current.name,
+        'image': [`${origin}${current.image}`],
+        'description': current.overview || current.description,
+        'sku': current.slug,
+        'brand': { '@type': 'Brand', 'name': 'Vishakha Multivista Products' },
+        'offers': { '@type': 'Offer', 'url': canonical, 'priceCurrency': 'INR', 'availability': 'https://schema.org/InStock' }
+      };
+      ldAll.push(productJson);
+    }
+
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.className = 'seo-jsonld';
+    script.textContent = JSON.stringify(ldAll);
+    document.head.appendChild(script);
+
+  }, [path]);
   const product = products.find((item) => path === `/products/${item.slug}`);
   return product ? <ProductPage product={product} /> : path === '/products' ? <ProductsPage /> : <HomePage />;
 }

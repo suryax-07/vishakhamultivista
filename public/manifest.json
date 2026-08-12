@@ -1,0 +1,11 @@
+{
+  "name": "Vishakha Multivista Products",
+  "short_name": "Vishakha",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0B2341",
+  "icons": [
+    { "src": "/logo.png", "sizes": "192x192", "type": "image/png" }
+  ]
+}
