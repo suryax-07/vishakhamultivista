@@ -47,7 +47,8 @@ const productFallback = 'https://images.pexels.com/photos/32390903/pexels-photo-
 const phone = '+919444602376';
 const phoneDisplay = '+91 94446 02376';
 const email = 'salesvishakha2024@gmail.com';
-const whatsapp = 'https://wa.me/919444602376';
+const whatsappNumber = '919444602376';
+const whatsapp = `https://wa.me/${whatsappNumber}`;
 const address = 'No. 8/65, First Floor, M K Pathamnaban Street, C Pallavaram, Chennai – 600043';
 
 const products: Product[] = [
@@ -80,6 +81,39 @@ const industries = [
 
 const SITE_ORIGIN = (import.meta as any)?.env?.VITE_SITE_ORIGIN || 'https://vishakhamultivista.vercel.app';
 
+function generateWhatsAppQuoteMessage(product: Product) {
+  const lines = [
+    'Hello Vishakha Multivista Team,',
+    '',
+    `I am interested in your *${product.name}*.`,
+    '',
+    'Product Category:',
+    product.category,
+    '',
+    'Key Specifications:',
+    ...product.specifications.map(([label, value]) => `• ${label}: ${value}`),
+    '',
+    'Applications:',
+    ...product.applications.map((application) => `• ${application}`),
+    '',
+    'Please provide:',
+    '• Product brochure',
+    '• Technical details',
+    '• Pricing information',
+    '• Delivery timeline',
+    '',
+    'Project Location: __________',
+    '',
+    'Thank you.',
+  ];
+  return lines.join('\n');
+}
+
+function getWhatsAppQuoteLink(product: Product) {
+  const message = generateWhatsAppQuoteMessage(product);
+  return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+}
+
 function Logo({ light = false }: { light?: boolean }) {
   return <div className={`brand ${light ? 'brand-light' : ''}`}><img className="brand-logo" src="/logo.png" alt="Vishakha Multivista Products logo" /><div><strong>Vishakha</strong><small>Multivista Products</small></div></div>;
 }
@@ -98,12 +132,12 @@ function Button({ children, variant = 'primary', onClick, href }: { children: Re
 
 function Header({ productPage = false }: { productPage?: boolean }) {
   const [open, setOpen] = useState(false);
-  const links = [['About', '/#about'], ['Products', '/products'], ['Industries', '/#industries'], ['Why us', '/#why-us'], ['Contact', '/#contact']];
-  return <header className="site-header"><div className="container header-inner"><a href="/" onClick={(e) => { e.preventDefault(); navigate('/'); }}><Logo /></a><nav className={open ? 'nav-open' : ''}>{links.map(([label, path]) => <a key={label} href={path} onClick={(e) => { e.preventDefault(); setOpen(false); navigate(path); }}>{label}</a>)}<Button onClick={() => navigate('/#contact')}>Get a quote</Button></nav><button className="menu-button" aria-label="Toggle menu" onClick={() => setOpen(!open)}>{open ? <X /> : <Menu />}</button></div></header>;
+  const links = [['Home', '/'], ['Products', '/products'], ['Catalogue', '/catalogue'], ['Industries', '/#industries'], ['Why us', '/#why-us'], ['Contact', '/contact']];
+  return <header className={`site-header ${productPage ? 'site-header-solid' : ''}`}><div className="container header-inner"><a href="/" onClick={(e) => { e.preventDefault(); navigate('/'); }}><Logo /></a><nav className={open ? 'nav-open' : ''}>{links.map(([label, path]) => <a key={label} href={path} onClick={(e) => { e.preventDefault(); setOpen(false); navigate(path); }}>{label}</a>)}<Button onClick={() => navigate('/contact')}>Get a quote</Button></nav><button className="menu-button" aria-label="Toggle menu" onClick={() => setOpen(!open)}>{open ? <X /> : <Menu />}</button></div></header>;
 }
 
 function Footer() {
-  return <footer className="footer"><div className="container"><div className="footer-top"><div><Logo light /><p className="footer-intro">Engineered steel door solutions that help ambitious projects move forward with confidence.</p><div className="footer-social"><a href="https://www.linkedin.com" aria-label="LinkedIn"><Linkedin size={17} /></a><a href="https://www.instagram.com" aria-label="Instagram"><Instagram size={17} /></a><a href={whatsapp} target="_blank" rel="noreferrer" aria-label="WhatsApp"><MessageCircle size={17} /></a></div></div><div><h4>Explore</h4><a href="/#about">About us</a><a href="/products">Products</a><a href="/#industries">Industries served</a><a href="/#why-us">Why choose us</a></div><div><h4>Contact</h4><a href={`tel:${phone}`}><Phone size={15} />{phoneDisplay}</a><a href={`mailto:${email}`}><Mail size={15} />{email}</a><a href={whatsapp} target="_blank" rel="noreferrer"><MessageCircle size={15} />WhatsApp us</a><p><MapPin size={15} />{address}</p></div></div><div className="footer-bottom"><span>© {new Date().getFullYear()} Vishakha Multivista Products Pvt. Ltd.</span><span>Inspiring Growth to the World</span></div></div></footer>;
+  return <footer className="footer"><div className="container"><div className="footer-top"><div><Logo light /><p className="footer-intro">Engineered steel door solutions that help ambitious projects move forward with confidence.</p><div className="footer-social"><a href="https://www.linkedin.com" aria-label="LinkedIn"><Linkedin size={17} /></a><a href="https://www.instagram.com" aria-label="Instagram"><Instagram size={17} /></a><a href={whatsapp} target="_blank" rel="noreferrer" aria-label="WhatsApp"><MessageCircle size={17} /></a></div></div><div><h4>Explore</h4><a href="/">Home</a><a href="/products">Products</a><a href="/#industries">Industries served</a><a href="/#why-us">Why choose us</a></div><div><h4>Contact</h4><a href={`tel:${phone}`}><Phone size={15} />{phoneDisplay}</a><a href={`mailto:${email}`}><Mail size={15} />{email}</a><a href={whatsapp} target="_blank" rel="noreferrer"><MessageCircle size={15} />WhatsApp us</a><p><MapPin size={15} />{address}</p></div></div><div className="footer-bottom"><span>© {new Date().getFullYear()} Vishakha Multivista Products Pvt. Ltd.</span><span>Inspiring Growth to the World</span></div></div></footer>;
 }
 
 function WhatsApp() { return <a className="whatsapp" href={whatsapp} target="_blank" rel="noreferrer" aria-label="Chat on WhatsApp"><MessageCircle size={22} /><span>Talk to an expert</span></a>; }
@@ -112,16 +146,66 @@ function QuickContactBar() {
   return <div className="quick-bar"><div className="container quick-bar-inner"><a href={whatsapp} target="_blank" rel="noreferrer"><MessageCircle size={18} /><span>WhatsApp</span></a><a href={`tel:${phone}`}><Phone size={18} /><span>Call</span></a><a href={`mailto:${email}`}><Mail size={18} /><span>Email</span></a><a href="https://www.google.com/maps?q=12.969694,80.148667" target="_blank" rel="noreferrer"><MapPin size={18} /><span>Locate us</span></a></div></div>;
 }
 
-function ImageWithFallback({ src, alt, className }: { src: string; alt: string; className?: string }) {
+function ImageWithFallback({ src, alt, className, title }: { src: string; alt: string; className?: string; title?: string }) {
   const [source, setSource] = useState(src);
-  return <img className={className} src={source} alt={alt} title={alt} loading="lazy" decoding="async" onError={() => setSource(productFallback)} />;
+  return <img className={className} src={source} alt={alt} title={title || alt} loading="lazy" decoding="async" onError={() => setSource(productFallback)} />;
 }
 
 function ProductCard({ product, featured = false }: { product: Product; featured?: boolean }) {
-  return <article className={`product-card ${featured ? 'featured-card' : ''}`}><a className="product-image" href={`/products/${product.slug}`} onClick={(e) => { e.preventDefault(); navigate(`/products/${product.slug}`); }}><ImageWithFallback src={product.image} alt={`${product.name} steel door solution`} /><span className="product-category">{product.category}</span><span className="image-arrow"><ArrowRight size={18} /></span></a><div className="product-card-body"><h3>{product.name}</h3><p>{product.description}</p><a className="text-link" href={`/products/${product.slug}`} onClick={(e) => { e.preventDefault(); navigate(`/products/${product.slug}`); }}>View details <MoveRight size={16} /></a></div></article>;
   const seoAlt = `${product.name} - ${product.category} Manufacturer Chennai | Vishakha Multivista Products`;
   const seoTitle = `${product.name} - Vishakha Multivista Products`;
   return <article className={`product-card ${featured ? 'featured-card' : ''}`}><a className="product-image" href={`/products/${product.slug}`} onClick={(e) => { e.preventDefault(); navigate(`/products/${product.slug}`); }}><ImageWithFallback src={product.image} alt={seoAlt} className="product-thumb" title={seoTitle} /><span className="product-category">{product.category}</span><span className="image-arrow"><ArrowRight size={18} /></span></a><div className="product-card-body"><h3>{product.name}</h3><p>{product.description}</p><a className="text-link" href={`/products/${product.slug}`} onClick={(e) => { e.preventDefault(); navigate(`/products/${product.slug}`); }}>View details <MoveRight size={16} /></a></div></article>;
+}
+
+type RecommendationAnswers = {
+  use: string;
+  width: string;
+  height: string;
+  priority: string;
+  movement: string;
+};
+
+function maximumMeasurement(product: Product, label: string) {
+  const row = product.specifications.find(([name]) => name.toLowerCase().includes(label));
+  if (!row) return 0;
+  const values = row[1].match(/\d+(?:\.\d+)?/g)?.map(Number) || [];
+  return values.length ? Math.max(...values) : 0;
+}
+
+function recommendProducts(answers: RecommendationAnswers) {
+  const requestedWidth = Number(answers.width) || 0;
+  const requestedHeight = Number(answers.height) || 0;
+  return products.map((product) => {
+    let score = 0;
+    const reasons: string[] = [];
+    const searchable = `${product.name} ${product.category} ${product.description} ${product.applications.join(' ')}`.toLowerCase();
+
+    if (answers.use === 'Healthcare' && /health|hospital|clinical|hygienic|pharma/.test(searchable)) { score += 5; reasons.push('fits healthcare and hygiene workflows'); }
+    if (answers.use === 'Industrial' && /industrial|factory|plant|warehouse/.test(searchable)) { score += 5; reasons.push('fits industrial traffic and service areas'); }
+    if (answers.use === 'Commercial' && /commercial|office|retail|hospitality/.test(searchable)) { score += 5; reasons.push('fits commercial traffic and presentation'); }
+    if (answers.use === 'Institutional' && /institution|school|public/.test(searchable)) { score += 5; reasons.push('fits institutional use'); }
+    if (answers.priority === 'Fire protection' && /fire|egress|exit/.test(searchable)) { score += 7; reasons.push('supports fire and life-safety requirements'); }
+    if (answers.priority === 'Hygiene and cleanability' && /clean|hygien|stainless|healthcare|pharma/.test(searchable)) { score += 7; reasons.push('supports hygienic, easy-clean environments'); }
+    if (answers.priority === 'Noise control' && /acoustic/.test(searchable)) { score += 7; reasons.push('is designed for sound control'); }
+    if (answers.priority === 'Ventilation' && /louver/.test(searchable)) { score += 7; reasons.push('provides controlled airflow'); }
+    if (answers.movement === 'Sliding' && /sliding|automatic/.test(searchable)) { score += 5; reasons.push('uses a space-efficient sliding movement'); }
+    if (answers.movement === 'Emergency exit' && /egress|fire exit|fire rated/.test(searchable)) { score += 5; reasons.push('supports a clear emergency exit route'); }
+    if (answers.movement === 'Standard swing' && !/sliding|automatic/.test(searchable)) { score += 2; reasons.push('is available as a conventional swing door'); }
+
+    const maxWidth = Math.max(maximumMeasurement(product, 'width'), maximumMeasurement(product, 'single'));
+    const maxHeight = Math.max(maximumMeasurement(product, 'height'), maximumMeasurement(product, 'single'));
+    if (requestedWidth && maxWidth >= requestedWidth) { score += 2; reasons.push(`supports your ${requestedWidth} mm width`); }
+    if (requestedHeight && maxHeight >= requestedHeight) { score += 2; reasons.push(`supports your ${requestedHeight} mm height`); }
+    return { product, score, reasons: reasons.slice(0, 2) };
+  }).sort((a, b) => b.score - a.score).slice(0, 3);
+}
+
+function RecommendationWizard() {
+  const [answers, setAnswers] = useState<RecommendationAnswers>({ use: '', width: '', height: '', priority: '', movement: '' });
+  const [complete, setComplete] = useState(false);
+  const recommendations = recommendProducts(answers);
+  const update = (field: keyof RecommendationAnswers, value: string) => setAnswers((current) => ({ ...current, [field]: value }));
+  return <section className="section recommendation-section" id="recommend"><div className="container recommendation-grid"><div className="recommendation-intro"><div className="eyebrow"><span /> Smart product match</div><h2>Find the right door for your site.</h2><p>Answer five practical questions. We compare your requirements with the published product applications and maximum dimensions to create a focused starting shortlist.</p><div className="recommendation-note"><Sparkles size={17} /> Final sizing and compliance should be confirmed by our technical team.</div></div><div className="wizard-panel"><div className="wizard-progress"><span className={answers.use ? 'done' : 'active'}>1</span><span className={answers.width && answers.height ? 'done' : answers.use ? 'active' : ''}>2</span><span className={answers.priority && answers.movement ? 'done' : answers.width && answers.height ? 'active' : ''}>3</span></div>{!complete ? <form onSubmit={(event) => { event.preventDefault(); setComplete(true); }}><label>Where will the door be used?<select required value={answers.use} onChange={(event) => update('use', event.target.value)}><option value="">Choose an environment</option><option>Healthcare</option><option>Industrial</option><option>Commercial</option><option>Institutional</option></select></label><div className="form-grid"><label>Opening width (mm)<input required min="400" max="5000" type="number" value={answers.width} onChange={(event) => update('width', event.target.value)} placeholder="e.g. 1200" /></label><label>Opening height (mm)<input required min="1800" max="4000" type="number" value={answers.height} onChange={(event) => update('height', event.target.value)} placeholder="e.g. 2100" /></label></div><label>What matters most?<select required value={answers.priority} onChange={(event) => update('priority', event.target.value)}><option value="">Choose a priority</option><option>Fire protection</option><option>Hygiene and cleanability</option><option>Noise control</option><option>Ventilation</option></select></label><label>How should it move?<select required value={answers.movement} onChange={(event) => update('movement', event.target.value)}><option value="">Choose an opening style</option><option>Standard swing</option><option>Sliding</option><option>Emergency exit</option></select></label><button className="button button-primary" type="submit">Show recommendations <ArrowRight size={16} /></button></form> : <div className="recommendation-results"><div className="results-heading"><div><div className="eyebrow"><span /> Your shortlist</div><h3>Three strong starting points.</h3></div><button className="text-link" type="button" onClick={() => setComplete(false)}>Edit answers</button></div>{recommendations.map(({ product, reasons }) => <a className="recommendation-result" key={product.slug} href={`/products/${product.slug}`} onClick={(event) => { event.preventDefault(); navigate(`/products/${product.slug}`); }}><ImageWithFallback src={product.image} alt={product.name} className="recommendation-image" /><div><strong>{product.name}</strong><span>{reasons.join(' and ') || product.description}</span></div><ChevronRight size={18} /></a>)}</div>}</div></div></section>;
 }
 
 function ContactForm() {
@@ -131,19 +215,29 @@ function ContactForm() {
   return <form className="contact-form" onSubmit={submit}><div className="form-grid"><label>Full name<input required name="name" placeholder="Your name" /></label><label>Work email<input required type="email" name="email" placeholder="you@company.com" /></label></div><div className="form-grid"><label>Phone number<input required name="phone" placeholder="+91 00000 00000" /></label><label>Project type<select name="project"><option>Choose a project type</option><option>Commercial</option><option>Healthcare</option><option>Industrial</option><option>Pharmaceutical</option><option>Residential</option></select></label></div><label>How can we help?<textarea required name="message" rows={4} placeholder="Tell us about your project, timeline or door requirements" /></label><button className="button button-primary" type="submit">Request consultation <ArrowRight size={16} /></button></form>;
 }
 
+function ContactPage() {
+  return <><Header productPage /><main><section className="contact-page-hero"><div className="container"><div className="eyebrow eyebrow-light"><span /> Start a project</div><h1>Let’s build better<br /><em>together.</em></h1><p>Tell us about your opening, standards and timeline. Our team will help you choose a practical door system and coordinate the next step.</p></div></section><section className="section contact-section contact-page-section"><div className="container contact-grid"><div className="contact-copy"><div className="eyebrow"><span /> Talk to Vishakha</div><h2>Clear answers for<br /><em>your project.</em></h2><p>Speak with our team about product selection, technical details, pricing, delivery or installation support.</p><div className="contact-details"><a href={`tel:${phone}`}><span><Phone size={18} /></span><div><small>Call us</small><strong>{phoneDisplay}</strong></div></a><a href={`mailto:${email}`}><span><Mail size={18} /></span><div><small>Email us</small><strong>{email}</strong></div></a><a href={whatsapp} target="_blank" rel="noreferrer"><span><MessageCircle size={18} /></span><div><small>WhatsApp</small><strong>Chat with our team</strong></div></a><div><span><MapPin size={18} /></span><div><small>Visit us</small><strong>{address}</strong></div></div></div></div><div className="contact-panel"><ContactForm /></div></div></section></main><Footer /><WhatsApp /></>;
+}
+
 function Hero() {
   const [active, setActive] = useState(0);
   useEffect(() => { const id = setInterval(() => setActive((a) => (a + 1) % heroImages.length), 5000); return () => clearInterval(id); }, []);
-  return <section className="hero"><div className="hero-slides">{heroImages.map((src, i) => <div key={src} className={`hero-slide ${i === active ? 'active' : ''}`} style={{ backgroundImage: `url(${src})` }} />)}</div><div className="hero-overlay" /><div className="hero-grid-lines" /><div className="container hero-content"><div className="eyebrow eyebrow-light"><span /> Chennai-based steel door specialists</div><h1>Steel door systems, <em>built to perform.</em></h1><p>Premium steel door solutions for commercial, industrial and healthcare projects — from thoughtful selection to precise installation.</p><div className="hero-actions"><Button variant="light" onClick={() => navigate('/#contact')}>Get a quote</Button><Button variant="outline" onClick={() => navigate('/products')}>View products</Button></div><div className="hero-proof"><span><b>2018</b> Founded</span><span><b>360°</b> Project support</span><span><b>Pan-India</b> Delivery</span></div></div><div className="hero-dots">{heroImages.map((src, i) => <button key={src} className={i === active ? 'active' : ''} aria-label={`Slide ${i + 1}`} onClick={() => setActive(i)} />)}</div></section>;
+  return <section className="hero"><div className="hero-slides">{heroImages.map((src, i) => <div key={src} className={`hero-slide ${i === active ? 'active' : ''}`} style={{ backgroundImage: `url(${src})` }} />)}</div><div className="hero-overlay" /><div className="hero-grid-lines" /><div className="container hero-content"><div className="eyebrow eyebrow-light"><span /> Chennai-based steel door specialists</div><h1>Steel door systems, <em>built to perform.</em></h1><p>Premium steel door solutions for commercial, industrial and healthcare projects — from thoughtful selection to precise installation.</p><div className="hero-actions"><Button variant="light" onClick={() => navigate('/contact')}>Get a quote</Button><Button variant="outline" onClick={() => navigate('/products')}>View products</Button></div><div className="hero-proof"><span><b>2018</b> Founded</span><span><b>360°</b> Project support</span><span><b>Pan-India</b> Delivery</span></div></div><div className="hero-dots">{heroImages.map((src, i) => <button key={src} className={i === active ? 'active' : ''} aria-label={`Slide ${i + 1}`} onClick={() => setActive(i)} />)}</div></section>;
+}
+
+function CapabilityStrip() {
+  return <section className="capability-strip" aria-label="Project support"><div className="container capability-grid"><div><strong>01</strong><span>Product selection</span><small>Recommendations matched to your opening, use and standards.</small></div><div><strong>02</strong><span>Project coordination</span><small>Clear technical support from specification to delivery.</small></div><div><strong>03</strong><span>Site-ready installation</span><small>Dependable execution for commercial and critical spaces.</small></div></div></section>;
 }
 
 function HomePage() {
   const [showAll, setShowAll] = useState(false);
-  return <><Header /><main><Hero /><QuickContactBar />
+  return <><Header /><main><Hero /><CapabilityStrip /><QuickContactBar />
 
 <section className="section intro-section" id="about"><div className="container intro-grid"><div><div className="eyebrow"><span /> About Vishakha</div><h2>One trusted partner for every opening.</h2></div><div className="intro-copy"><p className="lead">Vishakha Multivista Products Pvt. Ltd. manufactures, supplies and installs specialized steel doors, windows, frames and ventilators for spaces where performance matters.</p><p>Since 2018, we have supported builders, architects, construction engineers, hospitals and institutions with a single-window experience — combining product expertise, responsive consultancy and dependable site execution.</p><a className="text-link" href="/#contact">Start a conversation <MoveRight size={16} /></a></div></div></section>
 
 <section className="section section-gray"><div className="container"><div className="section-heading"><div><div className="eyebrow"><span /> What we make</div><h2>Engineered for the way<br />your project works.</h2></div><a className="text-link desktop-link" href="/products" onClick={(e) => { e.preventDefault(); navigate('/products'); }}>Explore all products <MoveRight size={16} /></a></div><div className="product-grid">{products.slice(0, showAll ? products.length : 4).map((product, index) => <ProductCard key={product.slug} product={product} featured={index === 0} />)}</div><button className="mobile-more" onClick={() => setShowAll(!showAll)}>{showAll ? 'Show fewer' : 'View more products'} <ChevronRight size={16} /></button></div></section>
+
+<RecommendationWizard />
 
 <section className="section industries-section" id="industries"><div className="container"><div className="section-heading centered"><div><div className="eyebrow"><span /> Built for your sector</div><h2>Performance where<br /><em>it matters most.</em></h2></div><p>From critical care to high-traffic commercial environments, our systems are configured around your people, process and place.</p></div><div className="industry-grid">{industries.map(({ title, icon: Icon, copy }) => <div className="industry-card" key={title}><Icon size={24} strokeWidth={1.7} /><h3>{title}</h3><p>{copy}</p><ArrowRight className="industry-arrow" size={18} /></div>)}</div></div></section>
 
@@ -155,14 +249,20 @@ function HomePage() {
 }
 
 function ProductPage({ product }: { product: Product }) {
-  return <><Header productPage /><main><section className="product-hero"><div className="container"><a className="back-link" href="/products" onClick={(e) => { e.preventDefault(); navigate('/products'); }}>← All products</a><div className="product-hero-grid"><div><div className="eyebrow"><span /> {product.category}</div><h1>{product.name}<em>.</em></h1><p>{product.overview}</p><Button onClick={() => navigate('/#contact')}>Request a quote</Button></div><div className="detail-image"><ImageWithFallback src={product.image} alt={`${product.name} product detail`} /><span>Vishakha engineered systems</span></div></div></div></section><section className="section detail-section"><div className="container detail-grid"><div><div className="eyebrow"><span /> Product overview</div><h2>Designed for dependable performance.</h2><p className="lead">Every Vishakha door is made to support the people and processes moving through your project every day.</p><div className="feature-list">{product.features.map((feature) => <div key={feature}><Check size={17} />{feature}</div>)}</div></div><div className="spec-card"><div className="spec-card-header"><h3>Technical specifications</h3><span>Project configurable</span></div><div className="spec-table">{product.specifications.map(([label, value]) => <div key={label}><span>{label}</span><strong>{value}</strong></div>)}</div></div></div></section><section className="section applications-section"><div className="container applications-grid"><div><div className="eyebrow"><span /> Applications</div><h2>At home in demanding environments.</h2></div><div className="application-list">{product.applications.map((application) => <div key={application}><ShieldCheck size={18} />{application}<ArrowRight size={16} /></div>)}</div></div></section><section className="section detail-cta"><div className="container detail-cta-inner"><div><div className="eyebrow eyebrow-light"><span /> Need guidance?</div><h2>Let’s find the right fit<br /><em>for your project.</em></h2></div><Button variant="light" onClick={() => navigate('/#contact')}>Request consultation</Button></div></section></main><Footer /><WhatsApp /></>;
+  return <><Header productPage /><main><section className="product-hero"><div className="container"><a className="back-link" href="/products" onClick={(e) => { e.preventDefault(); navigate('/products'); }}>← All products</a><div className="product-hero-grid"><div><div className="eyebrow"><span /> {product.category}</div><h1>{product.name}<em>.</em></h1><p>{product.overview}</p><Button onClick={() => navigate('/#contact')}>Request a quote</Button></div><div className="detail-image"><ImageWithFallback src={product.image} alt={`${product.name} product detail`} /><span>Vishakha engineered systems</span></div></div></div></section><section className="section detail-section"><div className="container detail-grid"><div><div className="eyebrow"><span /> Product overview</div><h2>Designed for dependable performance.</h2><p className="lead">Every Vishakha door is made to support the people and processes moving through your project every day.</p><div className="feature-list">{product.features.map((feature) => <div key={feature}><Check size={17} />{feature}</div>)}</div></div><div className="spec-card"><div className="spec-card-header"><h3>Technical specifications</h3><span>Project configurable</span></div><div className="spec-table">{product.specifications.map(([label, value]) => <div key={label}><span>{label}</span><strong>{value}</strong></div>)}</div></div></div></section><section className="section quote-section"><div className="container"><a className="button button-primary quote-button" href={getWhatsAppQuoteLink(product)} target="_blank" rel="noreferrer"><MessageCircle size={16} /> Request Quote for This Product</a></div></section><section className="section applications-section"><div className="container applications-grid"><div><div className="eyebrow"><span /> Applications</div><h2>At home in demanding environments.</h2></div><div className="application-list">{product.applications.map((application) => <div key={application}><ShieldCheck size={18} />{application}<ArrowRight size={16} /></div>)}</div></div></section><section className="section detail-cta"><div className="container detail-cta-inner"><div><div className="eyebrow eyebrow-light"><span /> Need guidance?</div><h2>Let’s find the right fit<br /><em>for your project.</em></h2></div><Button variant="light" onClick={() => navigate('/#contact')}>Request consultation</Button></div></section></main><Footer /><WhatsApp /></>;
 }
 
 function ProductsPage() {
   const [filter, setFilter] = useState('All');
   const categories = ['All', ...Array.from(new Set(products.map((p) => p.category)))];
   const filtered = useMemo(() => filter === 'All' ? products : products.filter((p) => p.category === filter), [filter]);
-  return <><Header /><main><section className="listing-hero"><div className="container"><div className="eyebrow"><span /> Our product range</div><h1>Doors that do<br /><em>more.</em></h1><p>From fire-rated protection to clean room control, discover steel door systems configured for the demands of modern projects.</p></div></section><section className="section listing-section"><div className="container"><div className="filter-bar">{categories.map((category) => <button className={filter === category ? 'active' : ''} onClick={() => setFilter(category)} key={category}>{category}</button>)}</div><div className="product-grid product-grid-full">{filtered.map((product) => <ProductCard key={product.slug} product={product} />)}</div></div></section></main><Footer /><WhatsApp /></>;
+  return <><Header /><main><section className="listing-hero page-hero"><div className="container"><div className="eyebrow eyebrow-light"><span /> Our product range</div><h1>Doors that do<br /><em>more.</em></h1><p>From fire-rated protection to clean room control, discover steel door systems configured for the demands of modern projects.</p><a className="button button-light page-hero-action" href="/#recommend" onClick={(e) => { e.preventDefault(); navigate('/#recommend'); }}>Find my door <Sparkles size={16} /></a></div></section><section className="section listing-section"><div className="container"><div className="filter-bar">{categories.map((category) => <button className={filter === category ? 'active' : ''} onClick={() => setFilter(category)} key={category}>{category}</button>)}</div><div className="product-grid product-grid-full">{filtered.map((product) => <ProductCard key={product.slug} product={product} />)}</div></div></section></main><Footer /><WhatsApp /></>;
+}
+
+function CataloguePage() {
+  const [embedSupported, setEmbedSupported] = useState(true);
+  const catalogueSrc = '/products/catalogue.pdf';
+  return <><Header /><main><section className="listing-hero page-hero"><div className="container"><div className="eyebrow eyebrow-light"><span /> Product Catalogue</div><h1>Product<br /><em>Catalogue.</em></h1><p>Explore our complete range of specialized steel doors, fire rated doors, clean room doors, acoustic doors, sliding doors, windows, frames and ventilators.</p></div></section><section className="section catalogue-intro"><div className="container catalogue-panel"><div className="catalogue-panel-copy"><p>Browse our complete product catalogue for detailed specifications, applications and technical information.</p></div><a className="button button-primary catalogue-fullscreen" href={catalogueSrc} target="_blank" rel="noreferrer">Open Full Screen</a></div></section><section className="section catalogue-viewer"><div className="container">{embedSupported ? <iframe title="Vishakha Product Catalogue" src={catalogueSrc} width="100%" height="1000" onError={() => setEmbedSupported(false)} /> : <div className="catalogue-fallback"><p>Unable to display catalogue. Open PDF.</p><a className="button button-primary" href={catalogueSrc} target="_blank" rel="noreferrer">Open PDF</a></div>}</div></section></main><Footer /><WhatsApp /></>;
 }
 
 function App() {
@@ -171,8 +271,8 @@ function App() {
   useEffect(() => {
     const origin = SITE_ORIGIN || window.location.origin;
     const current = products.find((product) => path === `/products/${product.slug}`);
-    const title = current ? `${current.name} | Vishakha Multivista Products` : path === '/products' ? 'Steel Door Products | Vishakha Multivista Products' : 'Premium Steel Door Solutions | Vishakha Multivista Products';
-    const description = current ? `${current.description} | Vishakha Multivista Products - Manufacturer & Supplier in Chennai` : 'Vishakha Multivista Products manufactures, supplies and installs premium steel doors for commercial, industrial, healthcare and institutional projects.';
+    const title = current ? `${current.name} | Vishakha Multivista Products` : path === '/products' ? 'Steel Door Products | Vishakha Multivista Products' : path === '/catalogue' ? 'Product Catalogue | Vishakha Multivista Products' : path === '/contact' ? 'Contact Vishakha Multivista Products' : 'Premium Steel Door Solutions | Vishakha Multivista Products';
+    const description = current ? `${current.description} | Vishakha Multivista Products - Manufacturer & Supplier in Chennai` : path === '/catalogue' ? 'View the complete Vishakha Multivista product catalogue for fire rated doors, clean room doors, acoustic doors, sliding doors and specialized steel door systems.' : path === '/contact' ? 'Contact Vishakha Multivista Products for steel door recommendations, technical support, pricing, delivery and installation.' : 'Vishakha Multivista Products manufactures, supplies and installs premium steel doors for commercial, industrial, healthcare and institutional projects.';
     const canonical = `${origin}${path}`;
 
     document.title = title;
@@ -290,7 +390,7 @@ function App() {
 
   }, [path]);
   const product = products.find((item) => path === `/products/${item.slug}`);
-  return product ? <ProductPage product={product} /> : path === '/products' ? <ProductsPage /> : <HomePage />;
+  return path === '/contact' ? <ContactPage /> : product ? <ProductPage product={product} /> : path === '/products' ? <ProductsPage /> : path === '/catalogue' ? <CataloguePage /> : <HomePage />;
 }
 
 export default App;
