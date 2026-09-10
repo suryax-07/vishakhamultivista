@@ -121,7 +121,12 @@ function Logo({ light = false }: { light?: boolean }) {
 function navigate(path: string) {
   window.history.pushState({}, '', path);
   window.dispatchEvent(new PopStateEvent('popstate'));
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  const hash = path.includes('#') ? path.slice(path.indexOf('#')) : '';
+  window.setTimeout(() => {
+    const target = hash ? document.querySelector(hash) : null;
+    target?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (!target) window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, 0);
 }
 
 function Button({ children, variant = 'primary', onClick, href }: { children: ReactNode; variant?: 'primary' | 'light' | 'outline'; onClick?: () => void; href?: string }) {
@@ -132,8 +137,8 @@ function Button({ children, variant = 'primary', onClick, href }: { children: Re
 
 function Header({ productPage = false }: { productPage?: boolean }) {
   const [open, setOpen] = useState(false);
-  const links = [['Home', '/'], ['Products', '/products'], ['Catalogue', '/catalogue'], ['Industries', '/#industries'], ['Why us', '/#why-us'], ['Contact', '/contact']];
-  return <header className={`site-header ${productPage ? 'site-header-solid' : ''}`}><div className="container header-inner"><a href="/" onClick={(e) => { e.preventDefault(); navigate('/'); }}><Logo /></a><nav className={open ? 'nav-open' : ''}>{links.map(([label, path]) => <a key={label} href={path} onClick={(e) => { e.preventDefault(); setOpen(false); navigate(path); }}>{label}</a>)}<Button onClick={() => navigate('/contact')}>Get a quote</Button></nav><button className="menu-button" aria-label="Toggle menu" onClick={() => setOpen(!open)}>{open ? <X /> : <Menu />}</button></div></header>;
+  const links = [['Home', '/'], ['About us', '/#about'], ['Products', '/products'], ['Catalogue', '/catalogue'], ['Industries', '/#industries'], ['Why us', '/#why-us'], ['Contact', '/contact']];
+  return <header className={`site-header ${productPage ? 'site-header-solid' : ''}`}><div className="container header-inner"><a href="/" onClick={(e) => { e.preventDefault(); setOpen(false); navigate('/'); }}><Logo /></a><nav className={open ? 'nav-open' : ''} aria-label="Main navigation">{links.map(([label, path]) => <a key={label} href={path} onClick={(e) => { e.preventDefault(); setOpen(false); navigate(path); }}>{label}</a>)}<Button onClick={() => { setOpen(false); navigate('/contact'); }}>Get a quote</Button></nav><button className="menu-button" type="button" aria-label={open ? 'Close menu' : 'Open menu'} aria-expanded={open} onClick={() => setOpen(!open)}>{open ? <X /> : <Menu />}</button></div></header>;
 }
 
 function Footer() {

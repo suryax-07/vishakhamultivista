@@ -7,6 +7,7 @@ html,
 body,
 #root {
   overflow-x: hidden;
+  max-width: 100%;
 }
 
 :root { font-family: 'DM Sans', sans-serif; color: #182235; background: #fff; font-synthesis: none; text-rendering: optimizeLegibility; }
@@ -30,6 +31,7 @@ button { cursor: pointer; }
 .site-header nav > a:not(.button) { transition: color .2s ease; }
 .site-header nav > a:not(.button):hover { color: #fff; }
 .menu-button { display: none; border: 0; background: transparent; color: #fff; }
+.site-header nav { min-width: 0; }
 .button { display: inline-flex; align-items: center; justify-content: center; gap: 13px; min-height: 48px; padding: 0 20px; border: 0; border-radius: 2px; font-size: 12px; font-weight: 700; letter-spacing: .02em; transition: transform .25s ease, background .25s ease, color .25s ease; }
 .button:hover { transform: translateY(-2px); }
 .button-primary { color: #fff; background: #0B2341; }
@@ -247,6 +249,15 @@ p { color: #68778a; line-height: 1.7; font-size: 15px; }
 }
 @media (max-width: 560px) { .container { width: calc(100% - 36px); } .header-inner { height: 80px; } .brand-logo { width: 42px; height: 42px; } .brand strong { font-size: 17px; } .brand small { font-size: 8px; } .site-header nav { top: 80px; left: 18px; right: 18px; } .hero { min-height: 730px; } .hero-content { padding-top: 55px; } h1 { font-size: 47px; } .hero-proof { gap: 17px; margin-top: 65px; flex-wrap: wrap; } .hero-proof span { flex: 1 0 28%; } .section { padding: 78px 0; } .section-heading, .centered { display: block; } .section-heading .desktop-link { display: none; } .section-heading > p { margin-top: 20px; } .product-grid, .product-grid-full { grid-template-columns: 1fr; gap: 14px; } .product-image { height: 250px; } .product-card p { min-height: auto; } .mobile-more { display: inline-flex; align-items: center; gap: 8px; color: #0B2341; background: transparent; border: 0; border-bottom: 1px solid #9baaba; padding: 17px 0 7px; font-size: 12px; font-weight: 800; margin-top: 20px; } .industry-grid { grid-template-columns: 1fr; } .industry-card { min-height: 168px; } .why-points { grid-template-columns: 1fr; } .why-points div:nth-child(odd) { margin-right: 0; } .form-grid { grid-template-columns: 1fr; gap: 20px; } .contact-panel { padding: 23px 18px; } .footer { padding-top: 55px; } .footer-top { grid-template-columns: 1fr; gap: 35px; } .footer-top > div:first-child { grid-column: auto; } .footer-bottom { display: block; line-height: 1.7; } .footer-bottom span { display: block; } .footer-bottom span + span { margin-top: 5px; } .whatsapp { right: 17px; bottom: 17px; padding: 12px; border-radius: 50%; } .whatsapp span { display: none; } .listing-hero { padding: 130px 0 70px; } .listing-hero h1 { font-size: 54px; } .filter-bar { gap: 6px; margin-bottom: 27px; } .filter-bar button { padding: 9px 11px; } .product-hero { padding: 115px 0 60px; } .back-link { margin-bottom: 35px; } .detail-image { height: 290px; } .spec-card-header { align-items: flex-start; flex-direction: column; } .spec-table > div { padding: 14px 16px; grid-template-columns: .9fr 1.2fr; } .quick-bar-inner { gap: 16px; } .map-frame iframe { height: 320px; } }
 @media (max-width: 760px) {
+  .site-header { z-index: 30; }
+  .header-inner { position: relative; }
+  .menu-button { display: grid; place-items: center; width: 44px; height: 44px; padding: 0; }
+  .site-header nav,
+  .site-header nav.nav-open { position: absolute; top: calc(100% + 1px); left: 0; right: 0; display: none; width: 100%; max-width: 100%; padding: 12px 18px 18px; flex-direction: column; align-items: stretch; gap: 0; background: #0b2341; border-top: 1px solid rgba(255,255,255,.12); box-shadow: 0 18px 30px rgba(7,27,50,.2); }
+  .site-header nav.nav-open { display: flex; }
+  .site-header nav > a:not(.button) { display: block; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.12); font-size: 14px; }
+  .site-header nav .button { width: 100%; margin-top: 14px; }
+  .site-header-solid nav { background: #0b2341; }
   .hero { min-height: 700px; }
   .hero-content { padding-top: 48px; }
   .hero-content h1 { font-size: clamp(42px, 13vw, 60px); line-height: 1.04; }
@@ -261,4 +272,8 @@ p { color: #68778a; line-height: 1.7; font-size: 15px; }
   .recommendation-image { width: 62px; height: 54px; }
   .map-header { align-items: flex-start; flex-direction: column; gap: 20px; }
   .map-frame iframe { height: min(78vw, 420px); }
+  .quick-bar-inner { gap: 0; justify-content: space-between; }
+  .quick-bar a { font-size: 11px; }
+  .quick-bar a svg { width: 16px; }
+  .catalogue-viewer iframe { height: 72vh; min-height: 520px; }
 }
